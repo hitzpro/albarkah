@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- CSS Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- JS Bootstrap 5 (termasuk Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/tentang-kami.css">
+    <style>
+        body{
+            font-family: 'poppins';
+        }
+        .tentang-kami{
+            border-bottom: 2px solid #6C757D;
+
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="../images/logo-nav.png" alt="Logo" class="img-fluid logo-navbar">
+            </a>
+    
+            <!-- Burger Icon (Toggling menu) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex align-items-center gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link beranda" href="../pages/index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link daftar-siswa" href="../pages/daftar_siswa.html">Daftar Siswa Baru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link kontak" href="../pages/kontak_kami.html">Kontak Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tentang-kami" href="../pages/tentang_kami.html">Tentang Kami</a>
+                    </li>
+    
+                    <!-- Login Button (Ikut masuk ke dalam menu) -->
+                    <li class="nav-item loginButton">
+                        <a href="../pages/login.html" class="btn btn-secondary">Login Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div class="container2">
+        <h1><strong>Tentang Kami</strong></h1>
+        
+        <div class="about-section">
+            <div class="building-image">
+                <img src="../images/bg_gedung.jpg" alt="Yayasan Al Barkah Katimaha">
+            </div>
+            <div class="about-content">
+                <h2><strong>Yayasan Al Barkah Katimaha</strong></h2>
+                <p>Yayasan Al Barkah Katimaha adalah lembaga pendidikan dan sosial yang berkomitmen untuk membentuk generasi yang berakhlak mulia, cerdas, dan mandiri. Kami menyediakan layanan pendidikan dari tingkat dasar hingga menengah, serta berbagai kegiatan keagamaan dan sosial kemasyarakatan. Dengan semangat kebersamaan dan nilai-nilai keislaman, kami terus berupaya memberikan kontribusi nyata bagi masyarakat dan lingkungan sekitar.</p>
+            </div>
+        </div>
+
+        <div class="staff-section">
+            <h2><strong>Kepala Sekolah</strong></h2>
+            <div class="staff-cards">
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <img src="../images/ust.png" alt="Ust. Andri S.Pd">
+                    </div>
+                    <div class="staff-info">
+                        <h3><strong>Ust. Andri S.Pd</strong></h3>
+                        <p>Kepala Sekolah SMPT Al Barkah Katimaha</p>
+                        <a href="#" class="profile-button">Lihat Profil</a>
+                    </div>
+                </div>
+
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <img src="../images/abi.png"" alt="Abi Yusuf S. S.Pd.I">
+                    </div>
+                    <div class="staff-info">
+                        <h3><strong>Abi Yusuf S. S.Pd.I</strong></h3>
+                        <p>Kepala Sekolah SMP Al Barkah Katimaha</p>
+                        <a href="#" class="profile-button">Lihat Profil</a>
+                    </div>
+                </div>
+
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <img src="../images/umi.png"" alt="Umi Elyanah">
+                    </div>
+                    <div class="staff-info">
+                        <h3><strong>Umi Elyanah</strong></h3>
+                        <p>Kepala Sekolah TK Al Barkah Katimaha</p>
+                        <a href="#" class="profile-button">Lihat Profil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="detail-description" id="leadershipDetails">
+            <div class="detail-header">
+                <button class="close-button" id="closeDetails">&times;</button>
+                <h2>Profil Pimpinan</h2>
+            </div>
+            
+            <div class="detail-content" id="ustAndriDetails">
+                <div class="detail-image">
+                    <img src="../images/ust.png" alt="Ust. Andri S.Pd">
+                </div>
+                <div class="detail-info">
+                    <h3>Ust. Andri S.Pd</h3>
+                    <p class="detail-role">Kepala Sekolah SMPT Al Barkah Katimaha</p>
+                    
+                    <div class="detail-section">
+                        <h4>Latar Belakang Pendidikan</h4>
+                        <ul>
+                            <li>S1 Pendidikan Matematika, Universitas Negeri Jakarta (2005-2009)</li>
+                            <li>Program Kaderisasi Ulama, Pondok Pesantren Modern (2009-2011)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Pengalaman</h4>
+                        <ul>
+                            <li>Kepala Sekolah SMPT Al Barkah Katimaha (2018-sekarang)</li>
+                            <li>Wakil Kepala Sekolah SMPT Al Barkah (2015-2018)</li>
+                            <li>Guru Matematika SMPT Al Barkah (2011-2015)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Visi Pendidikan</h4>
+                        <p>
+                            "Membangun generasi yang berakhlak mulia, berwawasan luas, dan berdaya saing global dengan 
+                            tetap berpegang teguh pada nilai-nilai keislaman."
+                        </p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Pencapaian</h4>
+                        <ul>
+                            <li>Pengembangan kurikulum terintegrasi ilmu umum dan agama</li>
+                            <li>Penghargaan Kepala Sekolah Berprestasi Tingkat Kabupaten (2020)</li>
+                            <li>Peningkatan prestasi akademik siswa dengan kelulusan 100% selama 5 tahun berturut-turut</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Kontak</h4>
+                        <p>Email: ust.andri@albarkahkatimaha.sch.id</p>
+                        <p>Telepon: 0821-xxxx-xxxx</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-content" id="abiYusufDetails" style="display: none;">
+                <div class="detail-image">
+                    <img src="../images/abi.png" alt="Abi Yusuf S. S.Pd.I">
+                </div>
+                <div class="detail-info">
+                    <h3>Abi Yusuf S. S.Pd.I</h3>
+                    <p class="detail-role">Kepala Sekolah SMP Al Barkah Katimaha</p>
+                    
+                    <div class="detail-section">
+                        <h4>Latar Belakang Pendidikan</h4>
+                        <ul>
+                            <li>S1 Pendidikan Agama Islam, UIN Syarif Hidayatullah Jakarta (2006-2010)</li>
+                            <li>Tahfidz Al-Qur'an, Pondok Pesantren Daarul Qur'an (2010-2012)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Pengalaman</h4>
+                        <ul>
+                            <li>Kepala Sekolah SMP Al Barkah Katimaha (2017-sekarang)</li>
+                            <li>Koordinator Kurikulum Keagamaan (2014-2017)</li>
+                            <li>Guru PAI dan Tahfidz SMP Al Barkah (2012-2014)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Visi Pendidikan</h4>
+                        <p>
+                            "Mencetak generasi yang hafal Al-Qur'an, berakhlak mulia, dan memiliki keunggulan 
+                            intelektual untuk menjadi pemimpin masa depan yang amanah."
+                        </p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Pencapaian</h4>
+                        <ul>
+                            <li>Pengembangan program Tahfidz unggulan dengan tingkat keberhasilan 85%</li>
+                            <li>Juara I Lomba Sekolah Berbasis Karakter Islami Tingkat Provinsi (2021)</li>
+                            <li>Peningkatan jumlah siswa hafal 10 juz selama masa pendidikan</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Kontak</h4>
+                        <p>Email: abi.yusuf@albarkahkatimaha.sch.id</p>
+                        <p>Telepon: 0813-xxxx-xxxx</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-content" id="umiElyanahDetails" style="display: none;">
+                <div class="detail-image">
+                    <img src="../images/umi.png" alt="Umi Elyanah">
+                </div>
+                <div class="detail-info">
+                    <h3>Umi Elyanah</h3>
+                    <p class="detail-role">Kepala Sekolah TK Al Barkah Katimaha</p>
+                    
+                    <div class="detail-section">
+                        <h4>Latar Belakang Pendidikan</h4>
+                        <ul>
+                            <li>S1 Pendidikan Anak Usia Dini, Universitas Indonesia (2007-2011)</li>
+                            <li>Pelatihan Montessori Method, International Montessori Association (2012)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Pengalaman</h4>
+                        <ul>
+                            <li>Kepala Sekolah TK Al Barkah Katimaha (2016-sekarang)</li>
+                            <li>Wakil Kepala TK Al Barkah (2014-2016)</li>
+                            <li>Guru TK Al Barkah (2011-2014)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Visi Pendidikan</h4>
+                        <p>
+                            "Membangun pondasi pendidikan anak usia dini yang islami, menyenangkan, dan 
+                            mengembangkan seluruh aspek kecerdasan dengan pendekatan yang ramah anak."
+                        </p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Pencapaian</h4>
+                        <ul>
+                            <li>Pengembangan kurikulum terpadu islami dan metode Montessori</li>
+                            <li>Penghargaan TK Terbaik Tingkat Kabupaten (2019, 2022)</li>
+                            <li>Peningkatan kesiapan siswa menuju SD dengan kemampuan membaca, menulis dan berhitung berbasis permainan</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Kontak</h4>
+                        <p>Email: umi.elyanah@albarkahkatimaha.sch.id</p>
+                        <p>Telepon: 0857-xxxx-xxxx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <img src="../images/logo-nav.png" alt="">
+        <p>Copyright © 2025 Wakhid Khoirul Aziz | All Rights Reserved </p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the profile buttons
+            const profileButtons = document.querySelectorAll(".profile-button");
+            
+            // Get the detail container and close button
+            const detailContainer = document.getElementById("leadershipDetails");
+            const closeButton = document.getElementById("closeDetails");
+            
+            // Get all the detail content sections
+            const ustAndriDetails = document.getElementById("ustAndriDetails");
+            const abiYusufDetails = document.getElementById("abiYusufDetails");
+            const umiElyanahDetails = document.getElementById("umiElyanahDetails");
+            
+            // Add click event to each profile button
+            profileButtons.forEach((button, index) => {
+                button.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    
+                    // Hide all detail contents first
+                    ustAndriDetails.style.display = "none";
+                    abiYusufDetails.style.display = "none";
+                    umiElyanahDetails.style.display = "none";
+                    
+                    // Show the appropriate detail content based on index
+                    if (index === 0) {
+                        ustAndriDetails.style.display = "flex";
+                    } else if (index === 1) {
+                        abiYusufDetails.style.display = "flex";
+                    } else if (index === 2) {
+                        umiElyanahDetails.style.display = "flex";
+                    }
+                    
+                    // Show the detail container
+                    detailContainer.classList.add("active");
+                    
+                    // Prevent scrolling on the body when modal is open
+                    document.body.style.overflow = "hidden";
+                });
+            });
+            
+            // Close button functionality
+            closeButton.addEventListener("click", function() {
+                detailContainer.classList.remove("active");
+                
+                // Re-enable scrolling on the body
+                document.body.style.overflow = "auto";
+            });
+            
+            // Close when clicking outside the detail content
+            detailContainer.addEventListener("click", function(e) {
+                if (e.target === detailContainer) {
+                    detailContainer.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                }
+            });
+            
+            // Close with Escape key
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape" && detailContainer.classList.contains("active")) {
+                    detailContainer.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

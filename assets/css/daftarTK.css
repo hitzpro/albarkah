@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.step-content h3{
+    margin-bottom: 20px;
+}
+
+.tk-container {
+    width: 100%;
+    margin: 0 auto;
+    /* padding: 20px; */
+}
+
+.tk-header {
+    background-color: #d4f7d4;
+    padding: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.tk-header-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.tk-header h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tk-header p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tk-header-image {
+    width: 30%;
+    height: auto;
+}
+
+.tk-header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.tk-register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #666;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.tk-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.tk-steps::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #ddd;
+    z-index: 1;
+}
+
+.tk-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.tk-step.active {
+    background: #00bfa5;
+    border-color: #00bfa5;
+    color: white;
+}
+
+.tk-form-container {
+    display: flex;
+    gap: 30px;
+    padding: 80px;
+}
+
+.tk-form-section {
+    flex: 2;
+}
+
+.tk-info-section {
+    flex: 1;
+}
+
+.tk-form-group {
+    margin-bottom: 30px;
+
+}
+
+.tk-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.tk-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.tk-form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+}
+
+
+.tk-form-group input[type="text"]:nth-child(2){
+    margin-bottom: 10px;
+}
+
+.tk-info-box {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.tk-info-box h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.tk-info-box p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.tk-submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #666;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: Poppins;
+
+}
+.tk-next-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #f8eded;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #333;
+    cursor: pointer;
+    width: 100%;
+    font-family: Poppins;
+
+}
+.tk-next-button:hover {
+    background: #decbcb;
+
+}
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .tk-form-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    .tk-info-section{
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .tk-info-section ul{
+        text-align: left;
+    }
+    .tk-info-section img{
+        width: 100%;
+    }
+    .tk-header{
+        padding: 40px;
+    }
+
+    .tk-steps{
+        padding: 20px;
+    }
+}

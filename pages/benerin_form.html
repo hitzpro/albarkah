@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Manajer</title>
+    <link rel="stylesheet" href="../assets/css/benerin_form.css">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Letakkan kode sidebar dibawah sini -->
+        <!-- Add this button just before your sidebar div -->
+        <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <!-- Logo placeholder -->
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <ul class="sidebar-menu">
+            <li >
+                <a href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="manajemen_siswa.html">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Manajemen Siswa</span>
+                </a>
+            </li>
+            <li>
+                <a href="tes_murid.html">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Tes Murid</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="perbaiki_form.html">
+                    <i class="fas fa-edit"></i>
+                    <span>Manajemen Formulir</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="logout-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="datetime" id="datetime">
+            <!-- DateTime will be inserted here by JavaScript -->
+        </div>
+        
+    </div>
+    <!-- Add this overlay div after the sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main-content">
+        <div class="container">
+            <h1 class="page-title">Form Manajer</h1>
+            
+            <div class="tab-container">
+                <button class="tab-button active">TK & SD</button>
+                <button class="tab-button">SMP</button>
+            </div>
+            
+            <!-- Atur Step Section -->
+            <div class="section">
+                <div class="section-header" id="aturStepHeader">
+                    <div class="section-title">
+                        <i class="fas fa-chevron-down"></i>
+                        <h2>Atur Step</h2>
+                    </div>
+                    <button class="add-button" onclick="showNotification('success', 'Step baru berhasil ditambahkan!')"><i class="fas fa-plus"></i> Tambah Step</button>
+                </div>
+                
+                <div class="section-content" id="aturStepContent">
+                <div class="step-list">
+                    
+                </div>
+
+                </div>
+            </div>
+
+            <!-- Modal Add Step -->
+            
+                    </form>
+                </div>
+            </div>
+
+            <div id="modalEditStep" class="modal">
+                <div class="modal-content">
+                    <h2>Edit Step</h2>
+                    <form id="formEditStep" action="../logic/edit_step.html" method="POST">
+                        <input type="hidden" id="edit_step_id" name="step_id">
+
+                        <label for="edit_stepNumber">Nomor Step:</label>
+                        <input type="number" id="edit_stepNumber" name="stepNumber" placeholder="Contoh: 1" required>
+
+                        <label for="edit_stepTitle">Judul Step:</label>
+                        <input type="text" id="edit_stepTitle" name="stepTitle" placeholder="Contoh: Data Pribadi" required>
+
+                        <div class="modal-buttons">
+                            <button type="submit" class="btn-simpan">Simpan</button>
+                            <button type="button" class="btn-batal" id="btnCloseModalEditStep">Batal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            
+            <!-- Atur Form Section -->
+            <div class="section">
+                <div class="section-header" id="aturFormHeader">
+                    <div class="section-title">
+                        <i class="fas fa-chevron-down"></i>
+                        <h2>Atur Form</h2>
+                    </div>
+                </div>
+                
+                    
+
+                    <div class="section-content" id="aturFormContent">
+                        
+                            
+                            <div class="form-step">
+                                <!-- JUDUL STEP DARI TABEL form_steps -->
+                                <div class="form-step-header">
+                                    <div class="step-number"><?= $stepNumber ?></div>
+                                    <div class="step-name"><?= htmlspecialchars($step_title) ?></div>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+
+                                <!-- ISI FIELD DARI TABEL form_fields -->
+                                <div class="form-step-content <?= $stepNumber > 1 ? 'hidden' : '' ?>">
+                                    <div class="form-fields">
+                                        
+                                            <div class="field-item">
+                                                <div class="field-name"><?= htmlspecialchars($field['field_label']) ?></div>
+                                                <div class="field-tags">
+                                                    
+                                                        <span class="tag required">Wajib</span>
+                                                    
+                                                    <span class="tag type"><?= strtoupper($field['jenjang']) ?></span>
+                                                </div>
+                                                <div class="field-actions">
+                                                    <button class="action-button edit-button" onclick="showNotification('info', 'Fitur edit belum tersedia!')"><i class="fas fa-pen"></i></button>
+                                                    <button class="action-button delete-button" onclick="showNotification('warning', 'Fitur hapus belum tersedia!')"><i class="fas fa-trash"></i></button>
+                                                </div>
+                                            </div>
+                                        
+                                    </div>
+
+                                    <button class="add-button" id="addFieldBtn<?= $step_id ?>">
+                                        <i class="fas fa-plus"></i> Tambah Field
+                                    </button>
+                                </div>
+                            </div>
+                        
+                    </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Custom Tambah Field -->
+    <div class="custom-modal" id="customModalField">
+        <div class="custom-modal-content">
+            <h2>Tambah Field Baru</h2>
+            <form id="customFieldForm">
+                <input type="hidden" id="custom_jenjang" name="jenjang" value="">
+                <input type="hidden" id="custom_field_id">
+                <input type="hidden" id="custom_step_number">
+                
+
+                <label for="custom_step_id">Step</label>
+                    <select id="custom_step_id" required>
+                            
+                        </select>
+
+
+                <small>Step adalah tahapan dalam formulir pendaftaran, misalnya 'Data Pribadi' atau 'Data Orang Tua'. Pilih sesuai urutan langkah pengisian.</small>
+
+                <label for="custom_field_order">Urutan</label>
+                <input type="number" id="custom_field_order" value="" required readonly>
+
+                <small>Urutan menunjukkan posisi field ini pada formulir. Misalnya, jika field ini harus muncul setelah 'Nama Lengkap', beri urutan '2'.</small>
+
+                <label for="custom_field_label">Label Field</label>
+                <input type="text" id="custom_field_label" required>
+                <small>Label ini adalah teks yang akan tampil di formulir sebagai judul untuk input field. Misalnya: 'Nama Lengkap'. Jangan beri nama terlalu panjang atau sulit dimengerti.</small>
+
+                <label for="custom_field_name">Nama Field</label>
+                <input type="text" id="custom_field_name" required>
+                <small>Nama Field adalah nama variabel yang digunakan di sistem untuk memproses data. Pastikan nama field ini jelas dan tidak mengandung spasi. Contoh: 'nama_lengkap'.</small>
+
+                <label for="custom_field_type">Tipe Field</label>
+                <select id="custom_field_type" required>
+                    <option value="">Pilih Tipe</option>
+                    <option value="text">Text</option>
+                    <option value="number">Number</option>
+                    <option value="select">Select</option>
+                    <option value="file">File</option>
+                    <option value="radio">Radio</option>
+                    <option value="checkbox">Checkbox</option>
+                </select>
+                <small>Tipe field menentukan jenis input yang diterima. Pilih sesuai dengan tipe data yang diperlukan, misalnya 'Text' untuk nama atau 'Number' untuk usia.</small>
+
+                <label for="custom_field_placeholder">Placeholder</label>
+                <input type="text" id="custom_field_placeholder">
+                <small>Placeholder adalah teks yang muncul dalam input field sebagai petunjuk. Misalnya: 'Masukkan nama lengkap'. Placeholder tidak akan disertakan dalam data yang disubmit.</small>
+
+                <div id="custom_options_group" style="display: none;">
+                    <label for="custom_field_options">Opsi (pisahkan dengan koma)</label>
+                    <input type="text" id="custom_field_options">
+                    <small>Jika tipe field adalah 'Select', 'Radio', atau 'Checkbox', masukkan opsi-opsi yang tersedia. Misalnya: 'Laki-laki, Perempuan' untuk tipe 'Radio'.</small>
+                </div>
+
+                <div id="custom_file_info_group" style="display: none;">
+                    <label for="custom_additional_info">Info Tambahan (format file)</label>
+                    <input type="text" id="custom_additional_info">
+                    <small>Jika tipe field adalah 'File', beri informasi tentang format file yang diterima, misalnya 'JPG, PNG, PDF'.</small>
+                </div>
+
+                <div class="custom-form-group">
+                    <label for="custom_is_required" class="custom-label">
+                        <input type="checkbox" class="custom-checkbox" id="custom_is_required">
+                        Wajib diisi
+                    </label>
+                    <small>Jika dicentang, field ini akan menjadi wajib diisi oleh pengguna. Jika tidak dicentang, field bersifat opsional.</small>
+                </div>
+
+                <div class="custom-form-group">
+                    <label for="custom_is_active" class="custom-label">
+                        <input type="checkbox" class="custom-checkbox" id="custom_is_active">
+                        Aktif
+                    </label>
+                    <small>Centang jika field ini aktif dan ditampilkan pada formulir. Jika tidak dicentang, field akan disembunyikan dari formulir.</small>
+                </div>
+
+                <div class="custom-modal-buttons">
+                    <button type="button" class="custom-btn-batal" id="customCancelBtn">Batal</button>
+                    <button type="submit" class="custom-btn-simpan">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Edit Field Modal -->
+    <div id="editModalField" class="modal custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Field</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editFieldForm" action="../logic/update_field.html" method="POST">
+                    <input type="hidden" id="edit_field_id" name="field_id">
+                    
+                    <div class="form-group">
+                        <label for="edit_field_label">Label Field:</label>
+                        <input type="text" id="edit_field_label" name="field_label" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_field_name">Nama Field:</label>
+                        <input type="text" id="edit_field_name" name="field_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_step_id">Step ID:</label>
+                        <select id="edit_step_id" name="step_id" required>
+                            
+                        </select>
+
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_field_order">Urutan:</label>
+                        <input type="number" id="edit_field_order" name="field_order" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_field_type">Tipe Field:</label>
+                        <select id="edit_field_type" name="field_type" required>
+                            <option value="text">Text</option>
+                            <option value="number">Number</option>
+                            <option value="date">Date</option>
+                            <option value="email">Email</option>
+                            <option value="select">Select</option>
+                            <option value="radio">Radio</option>
+                            <option value="checkbox">Checkbox</option>
+                            <option value="textarea">Textarea</option>
+                            <option value="file">File</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_field_placeholder">Placeholder:</label>
+                        <input type="text" id="edit_field_placeholder" name="field_placeholder">
+                    </div>
+                    
+                    <div class="form-group" id="edit_options_group" style="display: none;">
+                        <label for="edit_field_options">Pilihan (pisahkan dengan koma):</label>
+                        <textarea id="edit_field_options" name="field_options" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group" id="edit_file_info_group" style="display: none;">
+                        <label for="edit_additional_info">Info Tambahan:</label>
+                        <textarea id="edit_additional_info" name="additional_info" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="edit_is_required" name="is_required">
+                        <label for="edit_is_required">Wajib diisi</label>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="edit_is_active" name="is_active">
+                        <label for="edit_is_active">Aktif</label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="button" id="editCancelBtn" class="btn btn-secondary">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal Templates -->
+    <div id="modal-container" class="modal-container">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Title</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-content" id="modal-content">
+                <!-- Modal content will be inserted here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/benerin_form.js"></script>
+    <script>
+    document.getElementById('custom_step_id').addEventListener('change', function () {
+        var stepId = this.value;
+
+        if (stepId) {
+            fetch('../logic/get_last_order.html?step_id=' + stepId)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('custom_field_order').value = data;
+                })
+                .catch(error => {
+                    console.error('Error fetching last_order:', error);
+                    document.getElementById('custom_field_order').value = 1;
+                });
+        } else {
+            document.getElementById('custom_field_order').value = 1;
+        }
+    });
+
+
+
+
+    // Ambil parameter status dan message dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        const message = urlParams.get('message');
+
+        // Panggil fungsi showNotification jika status ada
+        if (status && message) {
+            showNotification(status, message);
+        }
+    </script>
+
+
+
+<script>
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const dateTimeStr = now.toLocaleDateString('id-ID', options);
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+
+        // Update immediately and then every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function showNotification(type, message) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    Toast.fire({
+        icon: type,
+        title: message
+    }).then(() => {
+        if (type === 'success') {
+            window.location.href = 'benerin_form.html';
+        }
+    });
+}
+</script>
+
+</body>
+</html>

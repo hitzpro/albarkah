@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- CSS Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JS Bootstrap 5 (termasuk Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/kontak_kami.css">
+
+
+    <style>
+        .kontak{
+            border-bottom: 2px solid #6C757D;
+
+        }
+        .contact-content{
+            margin: 0;
+        }
+        body{
+            font-family: 'poppins';
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="../images/logo-nav.png" alt="Logo" class="img-fluid logo-navbar">
+            </a>
+    
+            <!-- Burger Icon (Toggling menu) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex align-items-center gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link beranda" href="../pages/index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link daftar-siswa" href="../pages/daftar_siswa.html">Daftar Siswa Baru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link kontak" href="../pages/kontak_kami.html">Kontak Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tentang-kami" href="../pages/tentang_kami.html">Tentang Kami</a>
+                    </li>
+    
+                    <!-- Login Button (Ikut masuk ke dalam menu) -->
+                    <li class="nav-item loginButton">
+                        <a href="../pages/login.html" class="btn btn-secondary">Login Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div class="contact-container">
+    <h1>Kontak Kami</h1>
+    <div class="contact-content">
+        <div class="info-box">
+            <div class="contact-details">
+                <h3><strong>Informasi Kontak Kami</strong></h3>
+                <p>Silahkan Untuk Menghubungi Kami Via Email Atau Bisa Melalui Nomor Yang Tertera Dibawah Ini. Dengan Senang Hati Kami Bisa membantu anda dalam menemukan solusi permasalahan anda terkait yayasan kami.</p>
+            </div>
+            <div class="contact-entry">
+                <i>📱</i>
+                <span>Ust Fathan Diruyatul Yusuf</span>
+            </div>
+            <div class="contact-entry">
+                <i>📱</i>
+                <span>Ust M. Zaki Tamimi</span>
+            </div>
+            <div class="contact-entry">
+                <i>✉️</i>
+                <span>AlbarkahKatimaha@gmail.com</span>
+            </div>
+            <div class="contact-entry">
+                <i>📍</i>
+                <span>Jl. Kp Katimaha, Karanganyar, Kec. Karangbahagia, Kabupaten Bekasi, Jawa Barat 17530</span>
+            </div>
+            <div class="social-media-links">
+                <a href="#"><img src="../images/ig.png" alt=""></a>
+                <a href="#"><img src="../images/tt.png" alt=""></a>
+                <a href="#"><img src="../images/yt.png" alt=""></a>
+                <a href="#"><img src="../images/fb.png" alt=""></a>
+            </div>
+        </div>
+        <div class="form-box">
+            <h3><strong>Tanya Langsung Lewat Email</strong></h3>
+            <form id="contactForm">
+                <input type="hidden" name="_subject" value="Pertanyaan Baru dari Website">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                
+                <div class="input-group">
+                    <label>Nama</label>
+                    <input type="text" name="nama" placeholder="Masukkan Nama Anda" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Masukkan Email Anda" required>
+                </div>
+                <div class="input-group">
+                    <label>Judul Pertanyaan</label>
+                    <input type="text" name="judul" placeholder="Masukkan Judul Pertanyaan" required>
+                </div>
+                <div class="input-group">
+                    <label>Isi Pertanyaan</label>
+                    <textarea name="pesan" placeholder="Masukkan Isi Pertanyaan" required></textarea>
+                </div>
+                <div class="button-container">
+                    <button type="button" id="submitBtn">Kirim Pesan</button>
+                    <button type="button" class="help-button" id="showGuideBtn">Baca Panduan Sebelum Bertanya</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Modal Panduan -->
+        <div id="guideModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Panduan Sebelum Bertanya</h3>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <h4>Hal-hal yang perlu diperhatikan:</h4>
+                    <ul>
+                        <li>Pastikan pertanyaan Anda belum terjawab di halaman FAQ kami</li>
+                        <li>Jelaskan pertanyaan Anda dengan detail dan jelas</li>
+                        <li>Sertakan informasi penting yang relevan dengan pertanyaan Anda</li>
+                        <li>Jika memungkinkan, cantumkan nomor telepon yang bisa dihubungi</li>
+                    </ul>
+                    
+                    <h4>Waktu respons kami:</h4>
+                    <p>Tim kami akan merespons pertanyaan Anda dalam waktu 1-2 hari kerja. Terima kasih atas kesabaran Anda.</p>
+                    
+                    <div class="guide-footer">
+                        <button id="closeGuideBtn">Saya Mengerti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <img src="../images/logo-nav.png" alt="">
+    <p>Copyright © 2025 Wakhid Khoirul Aziz | All Rights Reserved </p>
+</footer>
+
+<!-- Tambahkan SweetAlert2 dan Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Ambil elemen modal
+    var modal = document.getElementById('guideModal');
+    var showGuideBtn = document.getElementById('showGuideBtn');
+    var closeBtn = document.querySelector('.close-modal');
+    var closeGuideBtn = document.getElementById('closeGuideBtn');
+    var submitBtn = document.getElementById('submitBtn');
+    var contactForm = document.getElementById('contactForm');
+    
+    // Buka modal ketika tombol panduan diklik
+    showGuideBtn.addEventListener('click', function() {
+        modal.style.display = 'block';
+        document.body.classList.add('modal-open'); // Tambah class untuk mencegah scroll
+    });
+    
+    // Tutup modal dengan tombol silang
+    closeBtn.addEventListener('click', function() {
+        closeModal();
+    });
+    
+    // Tutup modal dengan tombol "Saya Mengerti"
+    closeGuideBtn.addEventListener('click', function() {
+        closeModal();
+    });
+    
+    // Tutup modal jika user klik di luar modal
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    });
+    
+    // Fungsi untuk menutup modal
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open'); // Hapus class untuk mengaktifkan scroll
+    }
+    
+    // Handle form submission dengan SweetAlert
+    submitBtn.addEventListener('click', function() {
+        // Validasi form terlebih dahulu
+        if (contactForm.checkValidity()) {
+            // Tampilkan SweetAlert
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin mengirim pesan ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Kirim!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Siapkan data formulir
+                    const formData = new FormData(contactForm);
+                    
+                    // Kirim ke FormSubmit
+                    fetch('https://formsubmit.co/wakhidkhoirulaziz@gmail.com', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire(
+                                'Terkirim!',
+                                'Pesan Anda telah berhasil dikirim.',
+                                'success'
+                            );
+                            contactForm.reset(); // Reset formulir
+                        } else {
+                            throw new Error('Ada masalah saat mengirim pesan');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire(
+                            'Error!',
+                            'Terjadi kesalahan: ' + error.message,
+                            'error'
+                        );
+                    });
+                }
+            });
+        } else {
+            // Jika formulir tidak valid, trigger validasi HTML5 default
+            contactForm.reportValidity();
+        }
+    });
+});
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar Styles */
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #374151;
+            color: white;
+            padding: 20px 0px;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-top: 30px;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            transition: background-color 0.3s;
+            gap: 10px;
+        }
+
+        /* Hover Effect */
+        .sidebar-menu li:hover {
+            background-color: #4b5563;
+        }
+
+        /* Active State */
+        .sidebar-menu li.active {
+            background-color: #4b5563;
+            border-left: 3px solid #60a5fa;
+        }
+
+        /* Icon Style */
+        .sidebar-menu i {
+            font-size: 18px;
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        .sidebar-menu li:hover i {
+            color: #ffffff;
+        }
+
+        .sidebar-menu li.active i {
+            color: #60a5fa;
+        }
+
+        .datetime {
+            margin-top: auto;
+            padding: 15px;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 250px;
+    flex: 1;
+    padding: 30px;
+}
+
+/* Welcome Section */
+.welcome-section {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+    border: 1px solid #ccc;
+    border-bottom: 5px solid #6C757D;
+}
+
+.welcome-section img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.welcome-text h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.welcome-text p {
+    color: #6b7280;
+}
+
+/* Stats Cards */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+    border: 1px solid #ccc;
+    border-bottom: 5px solid #6C757D;
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+.stat-card .number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+/* Table Styles */
+.table-container {
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #374151;
+    color: white;
+    text-align: left;
+    padding: 12px 20px;
+}
+
+td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Action Button */
+.action-button {
+    background-color: #6b7280;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #4b5563;
+}
+
+/* Add these new styles for the sidebar toggle button */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background-color: #374151;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Additional CSS to ensure smooth transitions */
+.sidebar, .main-content {
+    transition: all 0.3s ease;
+}
+
+/* Add overlay for mobile */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Modify existing media queries and add new ones */
+@media (max-width: 768px) {
+    body {
+        position: relative;
+    }
+    
+    .sidebar {
+        width: 250px;
+        position: fixed;
+        left: -250px; /* Start off-screen */
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+    
+    .sidebar.active {
+        left: 0; /* Show when active */
+    }
+    
+    .sidebar-toggle {
+        display: block;
+    }
+    
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+    }
+    
+    .main-content.sidebar-active {
+        margin-left: 250px;
+    }
+    
+    /* Restore the text in sidebar when it's open */
+    .sidebar.active .sidebar-menu span {
+        display: inline;
+    }
+}
+
+@media (max-width: 530px) {
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+    
+    .main-content.sidebar-active {
+        margin-left: 200px;
+    }
+    
+    .sidebar-menu a {
+        font-size: 14px;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    .welcome-section {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+        border: 1px solid #ccc;
+        border-bottom: 5px solid #6C757D;
+        gap: 20px;
+    }
+
+    .welcome-section img{
+        margin: 0;
+    }
+}
+

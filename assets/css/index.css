@@ -1,0 +1,652 @@
+/* Reset dasar */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Mencegah masalah ukuran */
+}
+
+/* Header */
+header {
+    display: flex;
+    padding: 20px;
+    background-color: #BCFFD0;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    font-family: 'Abhaya', serif; /* Pastikan font tersedia */
+}
+
+/* Tombol */
+.tombol .btn {
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+/* Tombol utama */
+.tombol .btn-primary {
+    background-color: #565d63 !important;
+    border: none !important;
+    color: white !important; /* Pastikan teks tetap terbaca */
+}
+.tombol .btn-primary:hover,
+.tombol .btn-primary:active {
+    background-color: #43484d !important;
+    border: none !important;
+}
+
+/* Tombol outline */
+.tombol .btn-outline-primary {
+    color: #565d63 !important;
+    border: 1px solid #565d63 !important;
+}
+.tombol .btn-outline-primary:hover,
+.tombol .btn-outline-primary:active {
+    background-color: #d5d7d9 !important;
+    color: #565d63 !important;
+    border: 1px solid #565d63 !important;
+}
+
+
+
+.informasi {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    font-family: 'Abhaya', serif; /* Pastikan font tersedia */
+    background-color: #BCFFD0;
+    padding: 40px;
+}
+
+.kartu {
+    display: flex;
+    flex-wrap: wrap; /* Supaya turun ke bawah kalau tidak muat */
+    justify-content: center; /* Tengahin */
+    gap: 40px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.kartu .card-tk,
+.kartu .card-sd,
+.kartu .card-smp {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.kartu:hover .card-tk,
+.kartu:hover .card-sd,
+.kartu:hover .card-smp {
+    opacity: 0.5;
+}
+
+.kartu .card-tk:hover,
+.kartu .card-sd:hover,
+.kartu .card-smp:hover {
+    opacity: 1;
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.kartu .card-tk:hover ~ .card-sd,
+.kartu .card-tk:hover ~ .card-smp,
+.kartu .card-sd:hover ~ .card-tk,
+.kartu .card-sd:hover ~ .card-smp,
+.kartu .card-smp:hover ~ .card-tk,
+.kartu .card-smp:hover ~ .card-sd {
+    opacity: 0.5;
+}
+
+
+
+.card-tk, .card-sd, .card-smp {
+    flex: 1;
+    max-width: 300px;
+    min-width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Tambahin padding di dalam card */
+.konten {
+    padding: 20px;
+}
+
+.card-tk .judul {
+    background-color: #c60000;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.card-sd .judul {
+    background-color: #004d00;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-smp .judul {
+    background-color: #000080;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.konten ul {
+    list-style: none;
+    padding: 0;
+}
+
+.konten ul li {
+    text-align: left;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.konten ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.konten a {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    background: #666;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: poppins;
+}
+
+.konten h3{
+    font-size: 20px;
+}
+
+
+
+
+/* Umum */
+.karousel {
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.karousel-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.karousel-item {
+    flex: 1;
+    max-width: 300px;
+    min-width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+}
+
+.karousel{
+    display: none;
+}
+
+/* Media query untuk layar kecil (HP) */
+@media (max-width: 768px) {
+    /* Menyembunyikan kartu untuk layar lebih besar dari 768px */
+    .kartu {
+        display: none;
+    }
+
+    /* Menampilkan karousel pada layar kecil */
+    .karousel {
+        display: block;
+    }
+    
+    .karousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 24px;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .karousel-btn.prev {
+        left: 10px;
+    }
+
+    .karousel-btn.next {
+        right: 10px;
+    }
+
+    /* Menambahkan styling untuk indikator */
+    .karousel-indicator {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .indicator-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .indicator-dot.active {
+        background-color: #666;
+    }
+}
+
+
+
+
+
+
+/* Styling untuk Section Lokasi Kami */
+.maps {
+    padding: 60px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.maps h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: abhaya;
+    font-weight: bold;
+}
+
+
+/* Iframe untuk Google Maps */
+.maps iframe {
+    width: 100%;
+    height: 450px;  /* Sesuaikan tinggi peta sesuai keinginan */
+    border: 0;
+    border-radius: 10px;  /* Sudut peta yang melengkung */
+}
+
+/* Responsive untuk ukuran layar kecil */
+@media (max-width: 768px) {
+    .map-container {
+        max-width: 100%; /* Peta mengisi 100% lebar layar pada perangkat kecil */
+        margin: 10px 0;
+    }
+
+    h2 {
+        font-size: 20px; /* Ukuran teks lebih kecil pada layar kecil */
+    }
+
+    .map-container iframe {
+        height: 300px;  /* Mengurangi tinggi peta pada layar kecil */
+    }
+
+    .maps{
+    padding: 30px;
+    }
+}
+
+
+.more{
+    width: 100%;
+    background-color: #BCFFD0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    gap: 20px;
+}
+
+/* Styling untuk section .more-info */
+.more-info {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;  /* Menambahkan wrapping agar item tidak saling bertumpuk */
+}
+
+/* Styling untuk judul */
+.more-info h2 {
+    font-family: 'Abhaya', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Styling untuk deskripsi paragraf */
+.more-info p {
+    font-family: 'Abhaya', serif;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Styling untuk setiap contact1 */
+.contact1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    max-width: 300px;  /* Batas maksimal lebar kontainer */
+    margin-bottom: 20px;  /* Jarak antar kontak */
+    text-align: center;
+}
+
+/* Gambar pengguna */
+.contact1 img {
+    width: 50px;  /* Ukuran gambar yang proporsional */
+    height: 50px;
+    object-fit: cover;  /* Menjaga agar gambar tetap terpotong dengan proporsional */
+    border-radius: 50%;  /* Membuat gambar berbentuk bulat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Memberikan efek bayangan halus */
+    background-color: white;
+    padding: 10px;
+}
+
+/* Styling untuk elemen .telp */
+.contact1 .telp {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Gambar WhatsApp */
+.telp img {
+    width: 40px;  /* Ukuran ikon WhatsApp */
+    height: 40px;
+    padding: 10px;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Styling untuk teks dalam .telp */
+.telp p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+
+.sosmed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    gap: 10px;
+}
+
+.sosmed .container{
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.sosmed .container img{
+    width: 40px;
+    height: 40px;
+}
+
+.sosmed .container:hover{
+    cursor: pointer;
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Memberikan efek bayangan halus */
+
+}
+
+
+
+
+
+
+
+/* Container Styling */
+.custom-container {
+    width: 100%;
+    padding: 5rem 0;
+    background-color: white; 
+}
+
+.custom-inner-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Section Styling */
+.custom-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    font-family: abhala;
+}
+
+.custom-text-center {
+    text-align: center;
+}
+
+.custom-text-end {
+    text-align: right;
+}
+
+.custom-text-muted {
+    color: #6c757d;
+}
+
+/* Image */
+.custom-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.custom-image {
+    width: 100%;
+    /* max-width: 100%; */
+    height: auto;
+}
+
+#bgGedung {
+    width: 100%;
+    height: 50vh; /* Gunakan vh untuk memberi ukuran relatif terhadap tinggi viewport */
+    object-fit: contain; /* Memastikan gambar mengisi area dan terpotong jika perlu */
+    border-radius: 20px; /* Menambahkan border radius untuk sudut melengkung */
+    overflow: hidden; /* Menyembunyikan bagian gambar yang terpotong */
+}
+
+
+/* Content Styling */
+.custom-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.custom-title {
+    font-weight: bold;
+}
+
+.custom-text {
+    color: #6c757d;
+}
+
+/* Button Styling */
+.custom-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #565d63;
+    color: #565d63;
+    border-radius: 8px;
+    background-color: transparent;
+    font-weight: 500;
+    font-family: poppins;
+}
+
+.custom-btn:hover {
+    background-color: #b4b7b9;
+    color: white;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .custom-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .custom-image {
+        width: 80%;
+        /* max-width: 100%; */
+        height: auto;
+    }
+
+    .custom-text-end {
+        text-align: center;
+    }
+
+    .custom-button-container {
+        justify-content: center;
+    }
+
+    .custom-container {
+        padding: 3rem 0;
+    }
+}
+
+
+
+#kepalaSekolahSection,
+.carousel {
+    font-family: abhaya;
+}
+
+/* Carousel styling untuk ukuran kecil */
+@media (max-width: 768px) {
+    /* Hide normal sections when responsive */
+    #kepalaSekolahSection {
+        display: none;
+    }
+
+    .d-flex{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center; /* Center content vertically */
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .tombol .d-flex{
+        flex-direction: row;
+    }
+    .tombol .d-flex a{
+        font-size: 13px;
+        padding: 15px 20px;
+    }
+
+    /* Styling untuk carousel */
+    #kepalaSekolahCarousel {
+        display: block;
+        position: relative;
+    }
+
+    .carousel-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .carousel-content {
+        max-width: 90%;
+        margin-bottom: 15px;
+    }
+
+    .carousel-image {
+        max-width: 60%;
+        margin: 0 auto;
+    }
+
+    .carousel-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px; /* Optional: Add border radius to images */
+    }
+
+    /* Styling untuk indikator titik */
+    .carousel-indicators {
+        bottom: -30px; /* Position the indicators below the carousel */
+    }
+
+    .carousel-indicators li {
+        background-color: #007bff;
+    }
+
+    /* Styling untuk tombol navigasi (left & right) */
+    .carousel-control-prev, .carousel-control-next {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        filter: invert(1); /* Membuat ikon putih agar terlihat jelas */
+    }
+}
+
+/* Styling untuk tombol pada setiap item */
+.custom-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    color: #007bff;
+    border-radius: 30px;
+    background-color: transparent;
+    font-weight: 500;
+}
+
+.custom-btn:hover {
+    background-color: #007bff;
+    color: white;
+}

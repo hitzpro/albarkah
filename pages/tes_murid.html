@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tes Murid</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
+    <link rel="stylesheet" href="../assets/css/tes_murid.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+        }
+        .btn {
+            padding: 5px 10px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 12px 8px;
+        }
+        .btn-download {
+            background-color: #4CAF50;
+        }
+        .btn-danger {
+            background-color: #dc2626;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        .table-wrapper {
+            min-width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .file-link {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+        .file-link:hover {
+            text-decoration: underline;
+        }
+        .change-status {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .change-status:hover {
+            background-color: #2563EB;
+        }
+        .tombol {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Add this button just before your sidebar div -->
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <!-- Logo placeholder -->
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="manajemen_siswa.html">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Manajemen Siswa</span>
+                </a>
+            </li>
+            <li>
+                <a href="tes_murid.html">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Tes Murid</span>
+                </a>
+            </li>
+            <li>
+                <a href="benerin_form.html">
+                    <i class="fas fa-edit"></i>
+                    <span>Manajemen Formulir</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="logout-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="datetime" id="datetime">
+            <!-- DateTime will be inserted here by JavaScript -->
+        </div>
+    </div>
+    <!-- Add this overlay div after the sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+
+<div class="main-content">
+    <h2>Daftar Tes Murid</h2>
+    
+    <div class="table-container">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Jenjang</th>
+                        <th>Video Membaca</th>
+                        <th>Foto Tulisan</th>
+                        <th>Video Qur'an</th>
+                        <th>Tanggal Daftar</th>
+                        <th>Aksi</th>
+                        <th>Nilai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Contoh data statis -->
+                    <tr>
+                        <td>1</td>
+                        <td>Ahmad Fauzi</td>
+                        <td>SDIT</td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Video</a></td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Foto</a></td>
+                        <td>-</td>
+                        <td>2023-05-01</td>
+                        <td><button class="change-status" onclick="setKelas(1)">Set Kelas</button></td>
+                        <td>85</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Siti Nurhaliza</td>
+                        <td>SDIT</td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Video</a></td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Foto</a></td>
+                        <td>-</td>
+                        <td>2023-05-02</td>
+                        <td><button class="change-status" onclick="setKelas(2)">Set Kelas</button></td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Budi Santoso</td>
+                        <td>SMPIT</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Video</a></td>
+                        <td>2023-05-03</td>
+                        <td><button class="change-status" onclick="setKelas(3)">Set Kelas</button></td>
+                        <td>78</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dewi Safitri</td>
+                        <td>SMPIT</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Video</a></td>
+                        <td>2023-05-04</td>
+                        <td><button class="change-status" onclick="setKelas(4)">Set Kelas</button></td>
+                        <td>82</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Rudi Hermawan</td>
+                        <td>SDIT</td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Video</a></td>
+                        <td><a href="#" target="_blank" class="file-link">Lihat Foto</a></td>
+                        <td>-</td>
+                        <td>2023-05-05</td>
+                        <td><button class="change-status" onclick="setKelas(5)">Set Kelas</button></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="tombol">
+        <button class="btn btn-download" onclick="window.location.href='export_excel.html'">Download Excel</button>
+        <button class="btn btn-danger" onclick="hapusSemuaData()">Hapus Semua Data</button>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Menambahkan kelas active pada elemen <li> yang diklik
+        const items = document.querySelectorAll('.sidebar-menu li');
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active')); // Menghapus kelas active dari semua <li>
+                item.classList.add('active'); // Menambahkan kelas active pada <li> yang diklik
+            });
+        });
+
+        // Menambahkan kelas active pada elemen kedua saat halaman dimuat
+        window.addEventListener('load', () => {
+            items[2].classList.add('active'); // Menambahkan kelas active pada elemen ketiga (Tes Murid)
+        });
+    </script>
+
+<script>
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const dateTimeStr = now.toLocaleDateString('id-ID', options);
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+
+        // Update immediately and then every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Tab switching functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                button.classList.add('active');
+            });
+        });
+    </script>
+
+
+    <script>
+        function setKelas(id) {
+            Swal.fire({
+                title: 'Masukkan Kelas',
+                input: 'text',
+                inputLabel: 'Kelas',
+                inputPlaceholder: 'Contoh: 1A / 7B',
+                showCancelButton: true,
+                confirmButtonText: 'Simpan',
+                preConfirm: (kelas) => {
+                    if (!kelas) {
+                        Swal.showValidationMessage('Kelas wajib diisi');
+                    }
+                    return kelas;
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Di versi statis ini, kita hanya menampilkan notifikasi sukses
+                    Swal.fire('Sukses!', 'Kelas berhasil diupdate.', 'success');
+                }
+            });
+        }
+    </script>
+
+<script>
+function hapusSemuaData() {
+    Swal.fire({
+        title: 'Yakin ingin menghapus semua data?',
+        text: "Semua data siswa yang sudah mengikuti tes akan dihapus!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc2626',
+        cancelButtonColor: '#6b7280',
+        confirmButtonText: 'Ya, Hapus dan Download!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Pertama download data (versi statis hanya simulasi)
+            Swal.fire('Sukses!', 'Data telah didownload dan dihapus.', 'success');
+        }
+    });
+}
+</script>
+
+
+<script>
+    // Tangkap event klik pada tombol logout
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Mencegah link agar tidak langsung menuju logout.html
+
+        // Tampilkan SweetAlert konfirmasi logout
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Anda akan keluar dari akun ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Logout!',
+            cancelButtonText: 'Tidak, Tetap di sini!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika user memilih 'Ya, Logout!', redirect ke logout.html
+                window.location.href = 'login.html';
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const sidebarToggle = document.getElementById("sidebar-toggle");
+    const sidebar = document.querySelector(".sidebar");
+    const mainContent = document.querySelector(".main-content");
+    const overlay = document.getElementById("overlay");
+    
+    // Toggle sidebar when button is clicked
+    sidebarToggle.addEventListener("click", function() {
+        sidebar.classList.toggle("active");
+        mainContent.classList.toggle("sidebar-active");
+        overlay.classList.toggle("active");
+        
+        // Update toggle button position when sidebar is active
+        if (sidebar.classList.contains("active")) {
+            sidebarToggle.style.left = sidebar.offsetWidth + 15 + "px";
+        } else {
+            sidebarToggle.style.left = "15px";
+        }
+    });
+    
+    // Close sidebar when clicking on overlay
+    overlay.addEventListener("click", function() {
+        sidebar.classList.remove("active");
+        mainContent.classList.remove("sidebar-active");
+        overlay.classList.remove("active");
+        sidebarToggle.style.left = "15px";
+    });
+    
+    // Close sidebar when clicking on menu items (for mobile)
+    const menuItems = document.querySelectorAll(".sidebar-menu a");
+    menuItems.forEach(item => {
+        item.addEventListener("click", function() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove("active");
+                mainContent.classList.remove("sidebar-active");
+                overlay.classList.remove("active");
+                sidebarToggle.style.left = "15px";
+            }
+        });
+    });
+    
+    // Update sidebar state when window is resized
+    window.addEventListener("resize", function() {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove("active");
+            mainContent.classList.remove("sidebar-active");
+            overlay.classList.remove("active");
+            sidebarToggle.style.left = "15px";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

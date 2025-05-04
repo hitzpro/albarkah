@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Siswa</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
+    <link rel="stylesheet" href="../assets/css/manajemen_siswa.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Abhaya+Libre' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        
+
+    </style>
+</head>
+<body>
+    <!-- Add this button just before your sidebar div -->
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <!-- Logo placeholder -->
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="manajemen_siswa.html">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Manajemen Siswa</span>
+                </a>
+            </li>
+            <li>
+                <a href="tes_murid.html">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Tes Murid</span>
+                </a>
+            </li>
+            <li>
+                <a href="benerin_form.html">
+                    <i class="fas fa-edit"></i>
+                    <span>Manajemen Formulir</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="logout-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="datetime" id="datetime">
+            <!-- DateTime will be inserted here by JavaScript -->
+        </div>
+    </div>
+    <!-- Add this overlay div after the sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+<!-- Stats Cards -->
+<div class="stats-container">
+    <div class="stat-card">
+        <img src="../images/user.png" alt="TK">
+        <div class="stat-info">
+            <h3>Jumlah Murid TK</h3>
+            <div class="number">25 Anak</div> <!-- Ganti angkanya sesuai data yang kamu miliki -->
+        </div>
+    </div>
+    <div class="stat-card">
+        <img src="../images/user.png" alt="SD">
+        <div class="stat-info">
+            <h3>Jumlah Murid SD</h3>
+            <div class="number">40 Anak</div> <!-- Ganti angkanya sesuai data yang kamu miliki -->
+        </div>
+    </div>
+    <div class="stat-card">
+        <img src="../images/user.png" alt="SMP">
+        <div class="stat-info">
+            <h3>Jumlah Murid SMP</h3>
+            <div class="number">30 Anak</div> <!-- Ganti angkanya sesuai data yang kamu miliki -->
+        </div>
+    </div>
+</div>
+
+<!-- Tabs and Table -->
+<div class="tabs-container">
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="filterTab('TK')">Siswa TK</button>
+        <button class="tab-button" onclick="filterTab('SD')">Siswa SD/IT</button>
+        <button class="tab-button" onclick="filterTab('SMP')">Siswa SMP/IT</button>
+    </div>
+
+    <div class="table-container">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Umur</th>
+                        <th>Kelas</th>
+                        <th>Alamat</th>
+                        <th>Akte Kelahiran</th>
+                        <th>Kartu Keluarga</th>
+                        <th>Foto Murid</th>
+                        <th>Bukti Pembayaran</th>
+                        <th>Status</th>
+                        <th>Nomor Telepon</th>
+                        <th>Status Pindahan</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table-body">
+                    <tr data-tab="TK">
+                        <td>1</td>
+                        <td>Ahmad Fauzi</td>
+                        <td>5</td>
+                        <td>TK</td>
+                        <td>Jl. Merdeka No. 10</td>
+                        <td><a href="dummy/akte_1.pdf" target="_blank">Lihat Akte</a></td>
+                        <td><a href="dummy/kk_1.pdf" target="_blank">Lihat KK</a></td>
+                        <td><a href="dummy/foto_1.jpg" target="_blank">Lihat Foto</a></td>
+                        <td><a href="dummy/pembayaran_1.pdf" target="_blank">Lihat Bukti</a></td>
+                        <td class="status-pending">Pending</td>
+                        <td>081234567890</td>
+                        <td>Bukan</td>
+                        <td>
+                            <a href="#">Edit</a> | <a href="#">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr data-tab="SD">
+                        <td>2</td>
+                        <td>Nabila Zahra</td>
+                        <td>7</td>
+                        <td>SD</td>
+                        <td>Jl. Kemuning Raya</td>
+                        <td><a href="dummy/akte_2.pdf" target="_blank">Lihat Akte</a></td>
+                        <td><a href="dummy/kk_2.pdf" target="_blank">Lihat KK</a></td>
+                        <td><a href="dummy/foto_2.jpg" target="_blank">Lihat Foto</a></td>
+                        <td><a href="dummy/pembayaran_2.pdf" target="_blank">Lihat Bukti</a></td>
+                        <td class="status-diterima">Diterima</td>
+                        <td>081278945612</td>
+                        <td>Bukan</td>
+                        <td>
+                            <a href="#">Edit</a> | <a href="#">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr data-tab="SMP">
+                        <td>3</td>
+                        <td>Rizky Hidayat</td>
+                        <td>12</td>
+                        <td>SMP</td>
+                        <td>Jl. Anggrek No. 45</td>
+                        <td>File tidak tersedia</td>
+                        <td>File tidak tersedia</td>
+                        <td><a href="dummy/foto_3.jpg" target="_blank">Lihat Foto</a></td>
+                        <td>File tidak tersedia</td>
+                        <td class="status-ditolak">Ditolak</td>
+                        <td>082345678901</td>
+                        <td>Pindahan</td>
+                        <td>
+                            <a href="#">Edit</a> | <a href="#">Hapus</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+function filterTab(tab) {
+    const buttons = document.querySelectorAll(".tab-button");
+    const rows = document.querySelectorAll("#student-table-body tr");
+
+    // Update tab active
+    buttons.forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`.tab-button[onclick*="${tab}"]`).classList.add("active");
+
+    // Filter table rows
+    rows.forEach(row => {
+        const dataTab = row.getAttribute("data-tab");
+        row.style.display = dataTab === tab ? "" : "none";
+    });
+}
+
+// Default: tampilkan TK
+filterTab('TK');
+</script>
+
+
+
+
+
+
+    <script>
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const dateTimeStr = now.toLocaleDateString('id-ID', options);
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+
+        // Update immediately and then every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Tab switching functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                button.classList.add('active');
+                // Here you would typically update the table content based on the selected tab
+                // This will be handled by your PHP backend
+            });
+        });
+    </script>
+
+
+<script>
+// Menambahkan kelas active pada elemen <li> yang diklik
+const items = document.querySelectorAll('.sidebar-menu li');
+items.forEach(item => {
+    item.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('active')); // Menghapus kelas active dari semua <li>
+        item.classList.add('active'); // Menambahkan kelas active pada <li> yang diklik
+    });
+});
+
+// Menambahkan kelas active pada elemen kedua saat halaman dimuat
+window.addEventListener('load', () => {
+    items[1].classList.add('active'); // Menambahkan kelas active pada elemen kedua
+});
+</script>
+
+
+
+
+
+
+<!-- script logout -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    attachStatusChangeListeners();
+    attachWaButtonListeners();
+});
+
+function attachStatusChangeListeners() {
+    document.querySelectorAll('.change-status').forEach(link => {
+        link.addEventListener('click', handleStatusChange);
+    });
+}
+
+function handleStatusChange() {
+    const siswaId = this.getAttribute('data-id');
+    const currentStatus = this.getAttribute('data-status');
+
+    Swal.fire({
+        title: 'Pilih Status Baru',
+        input: 'select',
+        inputOptions: {
+            'Pending': 'Pending',
+            'Diterima': 'Diterima',
+            'Ditolak': 'Ditolak'
+        },
+        inputValue: currentStatus,
+        showCancelButton: true,
+        confirmButtonText: 'Update Status',
+        cancelButtonText: 'Batal',
+        inputValidator: value => !value && 'Status harus dipilih!'
+    }).then(result => {
+        if (result.isConfirmed) {
+            updateStatus(siswaId, result.value, this);
+        }
+    });
+}
+
+
+
+function updateUI(siswaId, newStatus, linkElement) {
+    const row = linkElement.closest('tr');
+
+    // Update status cell
+    const statusCell = row.querySelector('td.status-col');
+    if (statusCell) {
+        statusCell.innerHTML = `<a href="javascript:void(0);" class="change-status" data-id="${siswaId}" data-status="${newStatus}">${newStatus}</a>`;
+    }
+
+    // Update telepon cell jika diterima
+    const teleponCol = row.querySelector('.telepon-col');
+    if (teleponCol) {
+        const nama = teleponCol.getAttribute('data-nama');
+        const telp = teleponCol.getAttribute('data-telp');
+
+        if (newStatus === 'Diterima' && telp && telp !== '-') {
+            teleponCol.innerHTML = `
+                <button class="btn btn-sm btn-success open-wa-swal"
+                    data-phone="${telp}"
+                    data-nama="${nama}">
+                    <i class="fab fa-whatsapp"></i> Kirim WhatsApp
+                </button>
+            `;
+        } else {
+            teleponCol.textContent = telp || '-';
+        }
+    }
+
+    attachStatusChangeListeners();
+    attachWaButtonListeners(); // Penting agar tombol baru aktif
+}
+</script>
+
+</body>
+</html>

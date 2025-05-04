@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.login-container {
+    display: flex;
+    background: white;
+    border-radius: 16px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    overflow: hidden;
+    width: 1000px;
+    max-width: 90%;
+    margin: 50px auto;
+    font-family: poppins;
+    border: 1px solid #ccc;
+    border-bottom: 5px solid #565d63;
+
+}
+
+.login-left {
+    background-color: #BCFFD0;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-left img {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.login-right {
+    padding: 40px;
+    width: 50%;
+}
+
+.login-right h1,
+.login-right p{
+    text-align: center;
+
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.checkbox-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.remember-me label{
+    margin: 0;
+}
+
+.forgot-password {
+    color: #d946ef;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6C757D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #4b5563;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+    .login-left, .login-right {
+        width: 100%;
+    }
+    .login-left h1, .login-right h1{
+        font-size: 20px;
+    }
+
+    .checkbox-group {
+        font-size: 12px;
+    }
+}

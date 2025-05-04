@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Daftar Siswa Baru</title>
+    <link rel="icon" type="image/png" href="../images/logo.png"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/footer.css" />
+    <link rel="stylesheet" href="../assets/css/daftar_siswa.css" />
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Poppins;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #8A4CE8;
+            color: white;
+        }
+
+        .status-pending p {
+            background-color: yellow;
+            color: black;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .status-ditolak p {
+            background-color: red;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .status-diterima p {
+            background-color: green;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .pagination {
+            display: inline-block;
+            padding: 10px;
+            list-style-type: none;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+        .pagination a {
+            padding: 8px 16px;
+            margin: 0 4px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+
+        .pagination .active a {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .tab-button.active {
+            background-color: #37424c !important;
+            color: white;
+            border: 1px solid #6C757D;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-box input {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .tabs {
+            margin-bottom: 15px;
+        }
+
+        .tabs .tab-button {
+            margin-right: 10px;
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="../images/logo-nav.png" alt="Logo" class="img-fluid logo-navbar">
+            </a>
+    
+            <!-- Burger Icon (Toggling menu) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex align-items-center gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link beranda" href="../pages/index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link daftar-siswa" href="../pages/daftar_siswa.html">Daftar Siswa Baru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link kontak" href="../pages/kontak_kami.html">Kontak Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tentang-kami" href="../pages/tentang_kami.html">Tentang Kami</a>
+                    </li>
+    
+                    <!-- Login Button (Ikut masuk ke dalam menu) -->
+                    <li class="nav-item loginButton">
+                        <a href="../pages/login.html" class="btn btn-secondary">Login Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="search-container">
+    <div class="search-box">
+        <h2>Cari Nama Siswa Disini</h2>
+        <input type="text" id="search-input" placeholder="Ketik sesuatu disini">
+    </div>
+</div>
+
+<div class="container mt-4">
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="filterJenjang('TK')">TK</button>
+        <button class="tab-button" onclick="filterJenjang('SD')">SD</button>
+        <button class="tab-button" onclick="filterJenjang('SMP')">SMP</button>
+    </div>
+
+    <div class="table-responsive">
+        <table id="siswa-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Lengkap</th>
+                    <th>Jenjang Pendidikan</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-jenjang="TK">
+                    <td>1</td>
+                    <td>Ahmad Fauzi</td>
+                    <td>TK</td>
+                    <td>Laki-laki</td>
+                    <td class="status-pending"><p>Pending</p></td>
+                </tr>
+                <tr data-jenjang="TK">
+                    <td>2</td>
+                    <td>Nabila Zahra</td>
+                    <td>TK</td>
+                    <td>Perempuan</td>
+                    <td class="status-diterima"><p>Diterima</p></td>
+                </tr>
+                <tr data-jenjang="SD">
+                    <td>3</td>
+                    <td>Faisal Ramadhan</td>
+                    <td>SD</td>
+                    <td>Laki-laki</td>
+                    <td class="status-ditolak"><p>Ditolak</p></td>
+                </tr>
+                <tr data-jenjang="SMP">
+                    <td>4</td>
+                    <td>Putri Ayu</td>
+                    <td>SMP</td>
+                    <td>Perempuan</td>
+                    <td class="status-diterima"><p>Diterima</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Dummy -->
+    <!-- <div class="pagination">
+        <a href="#">&laquo; Prev</a>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <a href="#">Next &raquo;</a>
+    </div> -->
+</div>
+<footer class="footer">
+    <img src="../images/logo-nav.png" alt="">
+    <p>Copyright © 2025 Wakhid Khoirul Aziz | All Rights Reserved </p>
+</footer>
+
+<script>
+    function filterJenjang(jenjang) {
+        const rows = document.querySelectorAll('#siswa-table tbody tr');
+        const buttons = document.querySelectorAll('.tab-button');
+
+        // Update tab aktif
+        buttons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.tab-button[onclick*="${jenjang}"]`).classList.add('active');
+
+        // Filter baris
+        rows.forEach(row => {
+            row.style.display = row.getAttribute('data-jenjang') === jenjang ? '' : 'none';
+        });
+
+        // Reset pencarian
+        document.getElementById('search-input').value = '';
+    }
+
+    document.getElementById('search-input').addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#siswa-table tbody tr');
+
+        rows.forEach(row => {
+            const nama = row.children[1].textContent.toLowerCase();
+            const jenjang = row.getAttribute('data-jenjang');
+            const activeJenjang = document.querySelector('.tab-button.active').textContent;
+
+            if (nama.includes(searchTerm) && jenjang === activeJenjang) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+    // Default: hanya tampilkan jenjang TK
+    filterJenjang('TK');
+</script>
+
+</body>
+</html>

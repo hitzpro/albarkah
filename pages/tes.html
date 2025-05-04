@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran Siswa</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .file-input-container {
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Form Pendaftaran Siswa</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="registrationForm" action="process.php" method="POST" enctype="multipart/form-data">
+                            <!-- Data Umum -->
+                            <div class="mb-3">
+                                <label for="nama" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" name="nama" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="jenjang" class="form-label">Pilih Jenjang</label>
+                                <select class="form-select" id="jenjang" name="jenjang" required>
+                                    <option value="">-- Pilih Jenjang --</option>
+                                    <option value="SDIT">SDIT</option>
+                                    <option value="SMPIT">SMPIT</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Bagian SDIT -->
+                            <div id="sditSection" class="form-section">
+                                <div class="mb-4 p-3 bg-light rounded">
+                                    <h4 class="mb-3">Tes Membaca</h4>
+                                    <div class="mb-3">
+                                        <h5>Bacaan:</h5>
+                                        <div class="p-3 border rounded">
+                                            <p>"Indonesia adalah negara kepulauan terbesar di dunia. Memiliki lebih dari 17.000 pulau dengan beragam suku, bahasa, dan budaya. Keanekaragaman ini menjadi kekayaan bangsa yang harus kita jaga dan lestarikan. Bersama-sama kita membangun Indonesia menjadi negara yang maju dan sejahtera."</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="file-input-container">
+                                        <label for="videoMembaca" class="form-label">Upload Video Membaca</label>
+                                        <input type="file" class="form-control" id="videoMembaca" name="videoMembaca" accept=".mp4,.mov">
+                                        <div class="error" id="videoMembacaError"></div>
+                                        <small class="text-muted">Format: MP4, MOV. Maksimal 30MB</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <div class="file-input-container">
+                                        <label for="fotoTulisan" class="form-label">Upload Foto Tulisan Tangan</label>
+                                        <input type="file" class="form-control" id="fotoTulisan" name="fotoTulisan" accept=".jpg,.jpeg,.png">
+                                        <div class="error" id="fotoTulisanError"></div>
+                                        <small class="text-muted">Format: JPG, JPEG, PNG. Maksimal 30MB</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="mb-3">Soal Matematika</h4>
+                                    <div id="sditQuestions">
+                                        <div class="question">
+                                            <label class="form-label">1. Berapa hasil dari 12 + 8?</label>
+                                            <input type="number" class="form-control" name="sdit_soal_1" required>
+                                        </div>
+                                        <div class="question">
+                                            <label class="form-label">2. Ibu membeli 3 apel, lalu membeli 2 apel lagi. Berapa total apel yang ibu punya?</label>
+                                            <input type="number" class="form-control" name="sdit_soal_2" required>
+                                        </div>
+                                        <div class="question">
+                                            <label class="form-label">3. Jika kamu punya 10 permen dan membagikan 4 ke temanmu, berapa sisa permenmu?</label>
+                                            <input type="number" class="form-control" name="sdit_soal_3" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bagian SMPIT -->
+                            <div id="smpitSection" class="form-section">
+                                <div class="mb-4">
+                                    <div class="file-input-container">
+                                        <label for="videoQuran" class="form-label">Upload Video Membaca Al-Qur'an</label>
+                                        <input type="file" class="form-control" id="videoQuran" name="videoQuran" accept=".mp4,.mov">
+                                        <div class="error" id="videoQuranError"></div>
+                                        <small class="text-muted">Format: MP4, MOV. Maksimal 30MB</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="mb-3">Soal Matematika & Wawasan Islam</h4>
+                                    <div id="smpitQuestions">
+                                        <div class="question">
+                                            <label class="form-label">1. Hitung hasil dari (15 × 3) + 10</label>
+                                            <input type="number" class="form-control" name="smpit_soal_1" required>
+                                        </div>
+                                        <div class="question">
+                                            <label class="form-label">2. Jika sebuah buku berisi 120 halaman dan kamu membaca 30 halaman per hari, berapa hari yang dibutuhkan untuk selesai?</label>
+                                            <input type="number" class="form-control" name="smpit_soal_2" required>
+                                        </div>
+                                        <div class="question">
+                                            <label class="form-label">3. Sebutkan 3 rukun iman!</label>
+                                            <input type="text" class="form-control" name="smpit_soal_3" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Button Submit -->
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Submit Pendaftaran</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS & jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        // Handler untuk perubahan jenjang
+        $('#jenjang').on('change', function() {
+            const jenjang = $(this).val();
+
+            // Sembunyikan semua bagian form
+            $('.form-section').removeClass('active');
+
+            // Tampilkan bagian yang sesuai
+            if (jenjang === 'SDIT') {
+                $('#sditSection').addClass('active');
+                
+                // Reset required attributes untuk SMPIT
+                $('#smpitSection input').prop('required', false);
+                
+                // Set required attributes untuk SDIT
+                $('#sditSection input').prop('required', true);
+                
+            } else if (jenjang === 'SMPIT') {
+                $('#smpitSection').addClass('active');
+                
+                // Reset required attributes untuk SDIT
+                $('#sditSection input').prop('required', false);
+                
+                // Set required attributes untuk SMPIT
+                $('#smpitSection input').prop('required', true);
+            }
+        });
+
+        // Fungsi validasi file
+        function validateFile(fileInput, errorElement, maxSize = 30) {
+            const file = fileInput.files[0];
+            if (!file) {
+                $(errorElement).text('');
+                return true;
+            }
+
+            const maxBytes = maxSize * 1024 * 1024;
+            if (file.size > maxBytes) {
+                $(errorElement).text(`Ukuran file terlalu besar. Maksimal ${maxSize}MB.`);
+                return false;
+            }
+
+            $(errorElement).text('');
+            return true;
+        }
+
+        // Validasi sebelum submit
+        $('#registrationForm').on('submit', function(e) {
+            let valid = true;
+            
+            // Validasi jenjang dipilih
+            if ($('#jenjang').val() === '') {
+                valid = false;
+                alert('Silakan pilih jenjang pendidikan terlebih dahulu');
+                return false;
+            }
+
+            // Validasi SDIT
+            if ($('#sditSection').hasClass('active')) {
+                valid &= validateFile(document.getElementById('videoMembaca'), '#videoMembacaError');
+                valid &= validateFile(document.getElementById('fotoTulisan'), '#fotoTulisanError');
+            }
+
+            // Validasi SMPIT
+            if ($('#smpitSection').hasClass('active')) {
+                valid &= validateFile(document.getElementById('videoQuran'), '#videoQuranError');
+            }
+
+            if (!valid) {
+                e.preventDefault();
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

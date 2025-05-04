@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container untuk background */
+.search-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Sesuaikan dengan kebutuhan */
+    background-image: url('../../images/BG_GEDUNG.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+
+/* Gradasi hitam di bagian bawah */
+.search-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    z-index: 1;
+}
+
+/* Box pencarian */
+.search-box {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    width: 50%;
+    font-family: abhaya;
+}
+
+.search-box h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.search-box input {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-align: left;
+}
+
+/* Gaya untuk Tab */
+.tabs {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+
+
+/* Styling untuk tabel jika tidak ada data */
+.no-data {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    font-style: italic;
+}
+
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .search-container {
+        height: 300px; /* Sesuaikan tinggi untuk layar kecil */
+    }
+
+    .search-box {
+        width: 80%; /* Lebih lebar pada layar kecil */
+    }
+
+    .search-box h2 {
+        font-size: 1.5rem; /* Menyesuaikan ukuran font judul */
+    }
+
+    .search-box input {
+        font-size: 1rem; /* Menyesuaikan ukuran font input */
+        padding: 12px; /* Padding sedikit lebih besar untuk kenyamanan */
+    }
+}
+
+/* Responsif untuk layar ekstra kecil (misalnya smartphone) */
+@media (max-width: 480px) {
+    .search-container {
+        height: 250px; /* Menyesuaikan tinggi pada smartphone */
+    }
+
+    .search-box {
+        width: 90%; /* Lebih lebar untuk perangkat lebih kecil */
+    }
+
+    .search-box h2 {
+        font-size: 1.2rem; /* Menyesuaikan ukuran font lebih kecil */
+    }
+
+    .search-box input {
+        font-size: 0.9rem; /* Mengurangi ukuran font input */
+        padding: 10px; /* Padding lebih kecil */
+    }
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px; /* Atur min-width agar tabel tetap nyaman dibaca */
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+        white-space: nowrap; /* Mencegah teks terpotong */
+        font-size: 14px;
+
+    }
+
+    .no-data {
+        text-align: center;
+        font-weight: bold;
+        color: #888;
+        font-size: 14px;
+
+    }
+}

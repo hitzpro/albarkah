@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- CSS Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JS Bootstrap 5 (termasuk Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body>
+
+
+<!-- Script untuk mencegah tombol kembali browser -->
+<script>
+    // Mencegah tombol kembali browser
+    history.pushState(null, null, location.href);
+    window.onpopstate = function() {
+        history.go(1);
+    };
+</script>
+
+<div class="login-container">
+    <div class="login-left">
+        <img src="../images/login.png" alt="Login Illustration">
+        <h2><strong>Selamat Datang</strong></h2>
+        <p>Silahkan masuk Untuk Melanjutkan Ke halaman Dashboard</p>
+    </div>
+    <div class="login-right">
+        <h1><strong>Masuk Sebagai Admin</strong></h1>
+        <p class="subtitle">Lihat Perkembangan Sistem Pendaftaran Murid Sekarang</p>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Example" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="********" required>
+            </div>
+            <div class="checkbox-group">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Simpan username</label>
+                </div>
+                <a href="#" class="forgot-password">Lupa Kata Sandi ?</a>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='dashboard.html'">Masuk</button>
+        </form>
+    </div>
+</div>
+
+<!-- Script untuk fitur 'Remember Me' -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cek apakah ada username tersimpan
+        if (localStorage.getItem('rememberedUsername')) {
+            document.getElementById('username').value = localStorage.getItem('rememberedUsername');
+            document.getElementById('remember').checked = true;
+        }
+        
+        // Simpan username saat form disubmit jika checkbox dicentang
+        document.querySelector('form').addEventListener('submit', function() {
+            const rememberCheckbox = document.getElementById('remember');
+            const username = document.getElementById('username').value;
+            
+            if (rememberCheckbox.checked) {
+                localStorage.setItem('rememberedUsername', username);
+            } else {
+                localStorage.removeItem('rememberedUsername');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

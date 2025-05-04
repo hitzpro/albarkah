@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran SDIT Al Barkah</title>
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/daftarTK.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Abhaya+Libre' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <style>
+        .tk-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 5px;
+            background-color: lightgray;
+            cursor: pointer;
+        }
+
+        .tk-step.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .tk-step.completed {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .invalid {
+            border-color: red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+
+        .tk-form-group label {
+            font-weight: bold;
+        }
+
+        input.error, select.error {
+            border: 2px solid red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="../images/logo-nav.png" alt="Logo" class="img-fluid logo-navbar">
+            </a>
+    
+            <!-- Burger Icon (Toggling menu) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex align-items-center gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link beranda" href="../pages/index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link daftar-siswa" href="../pages/daftar_siswa.html">Daftar Siswa Baru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link kontak" href="../pages/kontak_kami.html">Kontak Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tentang-kami" href="../pages/tentang_kami.html">Tentang Kami</a>
+                    </li>
+    
+                    <!-- Login Button (Ikut masuk ke dalam menu) -->
+                    <li class="nav-item loginButton">
+                        <a href="../pages/login.html" class="btn btn-secondary">Login Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="tk-container">
+        <div class="tk-header">
+            <div class="row align-items-center flex-md-row flex-column-reverse">
+                <!-- Content -->
+                <div class="col-md-6 text-md-start text-center content d-flex flex-column gap-2 tombol" >
+                    <h1 class="fw-bold">Pendaftaran SD Al Barkah</h1>
+                    <p class="text-muted">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore nihil necessitatibus vel laborum quisquam cum!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-md-start justify-content-center">
+                        <a href="#" class="btn btn-primary">Lihat Info Pembayaran</a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="col-md-6 text-center">
+                    <img src="../images/header 1.png" alt="Header Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <!-- Step Navigation -->
+        <div class="tk-steps">
+            <div class="tk-step active" data-step="1">1</div>
+            <div class="tk-step" data-step="2">2</div>
+            <div class="tk-step" data-step="3">3</div>
+            <div class="tk-step" data-step="4">4</div>
+            <div class="tk-step" data-step="5">5</div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="tk-form-container">
+            <div class="tk-form-section">
+                <form id="registrationForm" novalidate action="../logic/daftarSD.php" method="POST" enctype="multipart/form-data">
+                    <!-- Step 1 - Data Pribadi -->
+                    <div class="step-content" data-step="1">
+                        <h3>1. Data Pribadi</h3>
+                        <div class="tk-form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" placeholder="Nama Lengkap Calon Murid" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Nama Panggilan</label>
+                            <input type="text" name="nama_panggilan" placeholder="Nama Panggilan Calon Murid" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Tempat Tanggal Lahir</label>
+                            <input type="text" name="tempat_tanggal_lahir" placeholder="Tempat Tanggal Lahir Calon Murid" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Umur</label>
+                            <input type="number" name="umur" placeholder="Umur Calon Murid" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Jenis Kelamin</label>
+                            <select name="jekel" required class="select">
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="tk-form-group">
+                            <label>Apakah siswa ini merupakan anak pindahan?</label>
+                            <select name="status_pindahan">
+                                <option value="Bukan" selected>Bukan</option>
+                                <option value="Pindahan">Pindahan</option>
+                            </select>
+                        </div>
+
+
+                        <div class="tk-form-group">
+                            <label>Anak Ke</label>
+                            <input type="number" name="anak_ke" placeholder="Calon Murid Anak Ke Berapa" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Jumlah Saudara Kandung</label>
+                            <input type="number" name="jml_saudara" placeholder="Jumlah Saudara Kandung Calon Murid" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Alamat Murid</label>
+                            <input type="text" name="alamat" placeholder="Alamat Tempat tinggal Calon Murid" required>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 - Data Orang Tua -->
+                    <div class="step-content" data-step="2">
+                        <h3>2. Data Orang Tua</h3>
+                        <div class="tk-form-group">
+                            <label>Nama Orang Tua</label>
+                            <input type="text" name="nama_ayah" placeholder="Nama Ayah">
+                            <input type="text" name="nama_ibu" placeholder="Nama Ibu">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Pendidikan Orang Tua</label>
+                            <input type="text" name="pendidikan_ayah" placeholder="Pendidikan Terakhir Ayah">
+                            <input type="text" name="pendidikan_ibu" placeholder="Pendidikan Terakhir Ibu">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Pekerjaan Orang Tua</label>
+                            <input type="text" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah">
+                            <input type="text" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Agama Orang Tua</label>
+                            <input type="text" name="agama_ortu" placeholder="Agama Orang Tua">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Nomer Telepon Orang Tua</label>
+                            <input type="text" name="no_telp_ortu" placeholder="Nomer telepon Orang Tua">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Alamat Orang Tua</label>
+                            <input type="text" name="alamat_ortu" placeholder="Alamat Orang Tua">
+                        </div>
+                    </div>
+
+                    <!-- Step 3 - Data Wali -->
+                    <div class="step-content" data-step="3">
+                        <h3>3. Data Wali</h3>
+                        <div class="tk-form-group">
+                            <label>Nama Wali</label>
+                            <input type="text" name="nama_wali" placeholder="Nama wali">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Pendidikan Wali</label>
+                            <input type="text" name="pendidikan_wali" placeholder="Pendidikan Terakhir wali">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Pekerjaan Wali</label>
+                            <input type="text" name="pekerjaan_wali" placeholder="Pekerjaan Wali">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Nomer Telepon Wali</label>
+                            <input type="text" name="no_telp_wali" placeholder="Nomer telepon Wali">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Alamat Wali</label>
+                            <input type="text" name="alamat_wali" placeholder="Alamat Wali">
+                        </div>
+                    </div>
+
+                    <!-- Step 4 - Kelengkapan -->
+                    <div class="step-content" data-step="4">
+                        <h3>4. Kelengkapan</h3>
+                        <div class="tk-form-group">
+                            <label>Upload Akte Kelahiran (pdf)</label>
+                            <input type="file" name="akte_kelahiran" accept=".pdf" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Upload Kartu Keluarga (pdf)</label>
+                            <input type="file" name="kartu_Keluarga" accept=".pdf" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Upload Foto Calon Murid (pdf)</label>
+                            <input type="file" name="foto_murid" accept=".jpg, .png, .jpeg" required>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 - Bukti Pembayaran -->
+                    <div class="step-content" data-step="5">
+                        <h3>5. Bukti Pembayaran</h3>
+                        <div class="tk-form-group">
+                            <label>Upload Bukti Pembayaran</label>
+                            <input type="file" name="bukti_pembayaran" accept=".pdf, .jpg, .png" required>
+                        </div>
+                        <div class="tk-form-group">
+                            <label>NIK</label>
+                            <input type="number" name="nik" placeholder="NIK sesuai KTP">
+                        </div>
+                        <div class="tk-form-group">
+                            <label>Upload KTP</label>
+                            <input type="file" name="ktp" accept=".pdf, .jpg, .png">
+                        </div>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="tk-next-button" type="button" id="nextBtn">Selanjutnya</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Info Section -->
+            <div class="tk-info-section">
+                <div class="tk-info-box">
+                    <h3>SYARAT DAN KETENTUAN</h3>
+                    <p>Orangtua/wali siswa menghimbau bersedia mentaati seluruh peraturan sekolah yang berlaku...</p>
+                    <img src="../images/confuse.png" alt="" class="confuse1"><br><br>
+                    <i class="messege-wali"><p>Dengan Mengisi Formulir Di Halaman Ini, Berarti Calon Murid telah menyatakan bahwa dirinya yatim / piatu / yatim piatu. Jika Murid Sudah mengisi formulir Orang Tua, maka Lewati Saja Formulir ini</p></i>
+
+                    <i class="messege-ortu"><p>Jika Calon Murid Tidak Memiliki Orang Tua, Lewati Saja Formulir Ini, dan langsung menuju ke halaman selanjutnya</p></i>
+
+                    <img src="../images/confuse.png" alt="" class="confuse"><br><br>
+                    <i class="messege"><p>Jika Memilih Membayar Tunai, Maka Anda Harus Mencetak Formulir Pembayaran Terlebih Dahulu, Lalu Harus mengunggah Foto KTP orang tua atau wali terlebih dahulu dan mengunggah Foto Orang Tua Di Kolom 'Upload Bukti Pembayaran'.</p></i>
+
+                    <p class="unggah-file"><strong>Syarat Unggah File</strong></p>
+                    <ul class="unggah-file-list">
+                        <li>Foto Harus Dalam ukuran 2 x 3 dengan warna background biru / merah</li>
+                        <li>Foto Harus Jelas dan Menggunakan Pakaian Rapih</li>
+                        <li>Foto Harus dalam bentuk file Jpg atau Png</li>
+                        <li>File Akte Dan KK harus dalam bentuk PDF</li>
+                    </ul>
+                </div>
+                <button type="submit" form="registrationForm" class="tk-submit-button" style="display:none;">Kirim Formulir</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <img src="../images/logo-nav.png" alt="">
+        <p>Copyright © 2025 Wakhid Khoirul Aziz | All Rights Reserved </p>
+    </footer>
+    
+
+    <script src="../assets/js/form.js"></script>
+
+    
+
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(e) {
+            // Mencegah form dikirim sebelum validasi
+            e.preventDefault();
+
+            let formIsValid = true;
+            let requiredFields = document.querySelectorAll("#registrationForm input[required], #registrationForm select[required]");
+            
+            // Cek setiap field yang wajib diisi
+            requiredFields.forEach(function(input) {
+                if (!input.value.trim()) {
+                    formIsValid = false; // Jika ada yang kosong, form tidak valid
+                    input.classList.add("error"); // Menandai input yang kosong (opsional, kamu bisa menambahkan style .error)
+                } else {
+                    input.classList.remove("error"); // Menghapus tanda error jika input sudah diisi
+                }
+            });
+
+            // Jika semua field valid, kirimkan form
+            if (formIsValid) {
+                Swal.fire({
+                    title: 'Apakah Anda Yakin?',
+                    text: "Data yang sudah diisi akan dikirim!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Kirim',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Jika pengguna mengklik "Kirim", kirimkan form
+                        document.getElementById("registrationForm").submit();
+                    }
+                });
+            } else {
+                // Jika ada input yang kosong, tampilkan pesan error
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Pastikan semua field yang wajib diisi sudah lengkap.',
+                    icon: 'error',
+                    confirmButtonText: 'Tutup'
+                });
+            }
+        });
+
+    </script>
+
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        // Fungsi untuk memeriksa ekstensi file
+        function checkFile(fileInput, allowedExtensions) {
+            const file = fileInput.files[0];
+            if (file) {
+                const ext = file.name.split('.').pop().toLowerCase();
+                return allowedExtensions.includes(ext);
+            }
+            return false;
+        }
+
+        // Ambil elemen input file
+        const akteKelahiran = document.getElementById('akte_kelahiran');
+        const kartuKeluarga = document.getElementById('kartu_Keluarga');
+        const fotoMurid = document.getElementById('foto_murid');
+        const buktiPembayaran = document.getElementById('bukti_pembayaran');
+
+        // Validasi file
+        if (!checkFile(akteKelahiran, ['pdf'])) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hanya file PDF yang diizinkan untuk Akte Kelahiran!',
+            });
+            event.preventDefault();
+            return;
+        }
+
+        if (!checkFile(kartuKeluarga, ['pdf'])) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hanya file PDF yang diizinkan untuk Kartu Keluarga!',
+            });
+            event.preventDefault();
+            return;
+        }
+
+        if (!checkFile(fotoMurid, ['pdf'])) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hanya file PDF yang diizinkan untuk Foto Murid!',
+            });
+            event.preventDefault();
+            return;
+        }
+
+        if (!checkFile(buktiPembayaran, ['pdf', 'jpg', 'png'])) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Bukti Pembayaran hanya boleh berupa file PDF, JPG, atau PNG!',
+            });
+            event.preventDefault();
+            return;
+        }
+    });
+</script>
+
+</body>
+</html>

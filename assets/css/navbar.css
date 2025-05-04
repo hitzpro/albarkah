@@ -1,0 +1,113 @@
+/* Navbar */
+.navbar {
+    padding: 15px 50px;
+    background-color: #ffffff;
+    border-bottom: 1px solid black;
+    font-family: poppins;
+    width: 100%;
+}
+
+/* Memastikan konten navbar berada di tengah */
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10rem;
+}
+
+/* Logo styling */
+.navbar-brand img {
+    width: 80%;
+    height: auto;
+}
+
+/* Navbar Links */
+.navbar-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #333;
+    padding: 10px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+    white-space: nowrap; /* Mencegah teks wrapping */
+}
+
+.nav-item {
+    width: auto !important; /* Ubah dari fixed width 100px ke auto */
+    min-width: 100px; /* Berikan min-width untuk mempertahankan standar ukuran */
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: #6C757D !important;
+    border-bottom: 2px solid #6C757D !important;
+}
+
+/* Login Button */
+.loginButton .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+    white-space: nowrap; /* Mencegah teks wrapping */
+}
+
+.loginButton .btn:hover {
+    background-color: #565d63;
+}
+
+/* Burger Menu */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+    .navbar{
+        padding: 15px 20px;
+    }
+
+    .navbar .container {
+        gap: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Navbar menu berubah ke mode column */
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Login button ikut dalam navbar saat responsive */
+    .loginButton {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .navbar-brand img {
+        width: 160px;
+        height: auto;
+    }
+    
+    .navbar-brand {
+        width: 180px;
+        height: auto;
+    }
+    
+    /* Memastikan teks menu tetap cukup lebar pada tampilan mobile */
+    .nav-item {
+        width: 100% !important; /* Pada tampilan mobile, biarkan mengambil lebar penuh */
+    }
+}

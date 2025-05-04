@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Abhaya+Libre' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <!-- Add this button just before your sidebar div -->
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <!-- Logo placeholder -->
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="manajemen_siswa.html">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Manajemen Siswa</span>
+                </a>
+            </li>
+            <li>
+                <a href="tes_murid.html">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Tes Murid</span>
+                </a>
+            </li>
+            <li>
+                <a href="benerin_form.html">
+                    <i class="fas fa-edit"></i>
+                    <span>Manajemen Formulir</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="logout-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="datetime" id="datetime">
+            <!-- DateTime will be inserted here by JavaScript -->
+        </div>
+        
+    </div>
+    <!-- Add this overlay div after the sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <img src="../images/user.png" alt="School Logo">
+        <div class="welcome-text">
+            <h1>Selamat Datang, Admin</h1>
+            <p>Anda telah masuk ke halaman dashboard admin Yayasan Al Barkah Katimaha. Gunakan menu di sebelah kiri untuk mengelola data pendaftaran siswa, melihat statistik, dan melakukan pengaturan sistem. Pastikan semua informasi tetap akurat dan up-to-date demi kelancaran proses administrasi.</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>Total Pendaftar</h3>
+            <div class="number" id="total-pendaftar">120</div>
+        </div>
+        <div class="stat-card">
+            <h3>TK</h3>
+            <div class="number" id="tk-count">45</div>
+        </div>
+        <div class="stat-card">
+            <h3>SD</h3>
+            <div class="number" id="sd-count">50</div>
+        </div>
+        <div class="stat-card">
+            <h3>SMP</h3>
+            <div class="number" id="smp-count">25</div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Lengkap</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Jenjang</th>
+                </tr>
+            </thead>
+            <tbody id="student-table-body">
+                <tr>
+                    <td>1</td>
+                    <td>Ahmad Fauzi</td>
+                    <td>Laki-laki</td>
+                    <td>TK</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Siti Aisyah</td>
+                    <td>Perempuan</td>
+                    <td>SD</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Rizky Hidayat</td>
+                    <td>Laki-laki</td>
+                    <td>SMP</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Nurul Fadilah</td>
+                    <td>Perempuan</td>
+                    <td>TK</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Deni Saputra</td>
+                    <td>Laki-laki</td>
+                    <td>SD</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="action-button">Kelola Data Siswa</button>
+</div>
+
+
+    <script>
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const dateTimeStr = now.toLocaleDateString('id-ID', options);
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+
+        // Update immediately and then every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+
+
+<script>
+// Menambahkan kelas active pada elemen <li> yang diklik
+const items = document.querySelectorAll('.sidebar-menu li');
+items.forEach(item => {
+    item.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('active')); // Menghapus kelas active dari semua <li>
+        item.classList.add('active'); // Menambahkan kelas active pada <li> yang diklik
+    });
+});
+
+// Menambahkan kelas active pada elemen pertama saat halaman dimuat
+window.addEventListener('load', () => {
+    items[0].classList.add('active'); // Menambahkan kelas active pada elemen pertama
+});
+
+</script>
+
+
+
+
+<!-- script logout -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // Tangkap event klik pada tombol logout
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Mencegah link agar tidak langsung menuju logout.html
+
+        // Tampilkan SweetAlert konfirmasi logout
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Anda akan keluar dari akun ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Logout!',
+            cancelButtonText: 'Tidak, Tetap di sini!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika user memilih 'Ya, Logout!', redirect ke logout.html
+                window.location.href = 'login.html';
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const sidebarToggle = document.getElementById("sidebar-toggle");
+    const sidebar = document.querySelector(".sidebar");
+    const mainContent = document.querySelector(".main-content");
+    const overlay = document.getElementById("overlay");
+    
+    // Toggle sidebar when button is clicked
+    sidebarToggle.addEventListener("click", function() {
+        sidebar.classList.toggle("active");
+        mainContent.classList.toggle("sidebar-active");
+        overlay.classList.toggle("active");
+        
+        // Update toggle button position when sidebar is active
+        if (sidebar.classList.contains("active")) {
+            sidebarToggle.style.left = sidebar.offsetWidth + 15 + "px";
+        } else {
+            sidebarToggle.style.left = "15px";
+        }
+    });
+    
+    // Close sidebar when clicking on overlay
+    overlay.addEventListener("click", function() {
+        sidebar.classList.remove("active");
+        mainContent.classList.remove("sidebar-active");
+        overlay.classList.remove("active");
+        sidebarToggle.style.left = "15px";
+    });
+    
+    // Close sidebar when clicking on menu items (for mobile)
+    const menuItems = document.querySelectorAll(".sidebar-menu a");
+    menuItems.forEach(item => {
+        item.addEventListener("click", function() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove("active");
+                mainContent.classList.remove("sidebar-active");
+                overlay.classList.remove("active");
+                sidebarToggle.style.left = "15px";
+            }
+        });
+    });
+    
+    // Update sidebar state when window is resized
+    window.addEventListener("resize", function() {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove("active");
+            mainContent.classList.remove("sidebar-active");
+            overlay.classList.remove("active");
+            sidebarToggle.style.left = "15px";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

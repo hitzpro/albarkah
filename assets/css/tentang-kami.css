@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: abhaya;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.container2 {
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 15px; /* Add consistent padding */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: clamp(24px, 5vw, 36px); /* Responsive font size */
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.building-image {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.building-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    margin-bottom: 20px;
+    font-size: clamp(20px, 4vw, 24px);
+}
+
+.about-content p {
+    line-height: 1.6;
+    color: #666;
+    font-size: clamp(14px, 3vw, 16px);
+}
+
+/* Staff Section */
+.staff-section {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.staff-section h2 {
+    margin-bottom: 30px;
+    font-size: clamp(20px, 4vw, 24px);
+}
+
+.staff-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.staff-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 1px solid #ccc;
+    border-bottom: 5px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.staff-image {
+    width: 100%;
+    height: 300px;
+    background: #d4f7d4;
+    position: relative;
+    overflow: hidden;
+}
+
+.staff-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.3s ease;
+}
+
+.staff-info {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.staff-info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.staff-info p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.profile-button {
+    background: #666;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.profile-button:hover {
+    background: #555;
+}
+
+/* Detail Description Container Styles */
+.detail-description {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1500;
+    display: none;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.detail-description.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-header {
+    width: 90%;
+    max-width: 900px; /* Sama dengan detail-content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #374151;
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 0 0 12px 12px;
+    overflow: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.detail-image {
+    width: 100%;
+    /* overflow: hidden; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.detail-image img {
+    max-height: 250px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.detail-info {
+    padding: 30px;
+}
+
+.detail-info h3 {
+    font-size: clamp(20px, 4vw, 24px);
+    color: #374151;
+    margin-bottom: 5px;
+}
+
+.detail-role {
+    color: #6b7280;
+    font-size: clamp(16px, 3vw, 18px);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+}
+
+.detail-section h4 {
+    font-size: clamp(16px, 3vw, 18px);
+    color: #4b5563;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.detail-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #4b5563;
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+.detail-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.detail-section ul li {
+    margin-bottom: 8px;
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+    .about-section {
+        padding: 40px 60px;
+    }
+    
+    .staff-cards {
+        justify-content: center;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Medium screens (992px to 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .about-section {
+        padding: 30px 40px;
+    }
+    
+    .staff-cards {
+        gap: 20px;
+    }
+    
+    .staff-card {
+        width: 280px;
+    }
+}
+
+/* Tablet screens (768px to 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+    .about-section {
+        padding: 25px 30px;
+    }
+    
+    .staff-cards {
+        gap: 15px;
+    }
+    
+    .staff-card {
+        width: 220px;  /* Slightly smaller on tablets */
+    }
+    
+    .staff-image {
+        height: 250px;
+    }
+    
+    .detail-content {
+        flex-direction: row;
+    }
+    
+    .detail-image {
+        width: 40%;
+        padding: 20px;
+    }
+    
+    .detail-info {
+        width: 60%;
+    }
+}
+
+/* Mobile screens (576px to 767px) */
+@media (max-width: 767px) {
+    .container2 {
+        margin: 30px auto;
+    }
+    
+    .about-section {
+        flex-direction: column;
+        padding: 20px;
+        margin: 20px 10px;
+    }
+    
+    .building-image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .staff-section {
+        padding: 10px;
+    }
+    
+    .staff-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+    
+    .staff-card {
+        width: 80%;
+        max-width: 350px;
+    }
+    
+    .detail-content {
+        width: 90%;
+        flex-direction: column;
+    }
+    
+    .detail-image {
+        padding: 15px;
+    }
+    
+    .detail-image img {
+        max-height: 200px;
+    }
+    
+    .detail-info {
+        padding: 20px;
+    }
+}
+
+/* Small mobile screens (up to 575px) */
+@media (max-width: 575px) {
+    h1 {
+        margin-bottom: 20px;
+    }
+    
+    .about-section {
+        padding: 15px;
+        margin: 15px 5px;
+        gap: 15px;
+    }
+    
+    .staff-card {
+        width: 90%;
+    }
+    
+    .staff-image {
+        height: 250px;
+    }
+    
+    .detail-description {
+        padding: 10px;
+    }
+    
+    .detail-content {
+        width: 90%;
+    }
+    
+    .detail-image img {
+        max-height: 150px;
+    }
+    
+    .detail-info {
+        padding: 15px;
+    }
+    
+    .detail-section {
+        margin-bottom: 20px;
+    }
+}
+
+/* Extra small screens (up to 400px) */
+@media (max-width: 400px) {
+    .container2 {
+        margin: 20px auto;
+    }
+    
+    .about-section {
+        padding: 12px;
+        margin: 10px 5px;
+    }
+    
+    .staff-card {
+        width: 95%;
+    }
+    
+    .staff-image {
+        height: 220px;
+    }
+    
+    .detail-header {
+        padding: 10px 15px;
+        width: 90%;
+    }
+    
+    .detail-image {
+        padding: 10px;
+    }
+    
+    .detail-image img {
+        max-height: 120px;
+    }
+    
+    .detail-info {
+        padding: 12px;
+    }
+}
